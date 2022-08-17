@@ -1,0 +1,6 @@
+<div class="container-lg">
+    <div *ngFor="let drink of (drinks$ | async)">
+        <p>{{ drink.strDrink }}</p>
+        <img [src]="drink.strDrinkThumb" alt="" class="drink-image">
+    </div>
+</div>
