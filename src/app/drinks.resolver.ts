@@ -13,6 +13,6 @@ import { DrinksService } from './drinks.service';
 export class DrinksResolver implements Resolve<boolean> {
   constructor(private drinks: DrinksService) {}
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-    return this.drinks.fetch().pipe(delay(3000))
+    return this.drinks.fetch()
   }
 }

@@ -1,6 +1,10 @@
 <div class="container-lg">
-    <div *ngFor="let drink of (drinks$ | async)">
-        <p>{{ drink.strDrink }}</p>
-        <img [src]="drink.strDrinkThumb" alt="" class="drink-image">
+    <app-search-bar [testInput]="hello" (searchTermEvent)="filterDrinks($event)"></app-search-bar>
+    <app-drink-select (formUpdate)="fetchAlcohol($event)"></app-drink-select>
+    <div [ngStyle]="!showDrinks ? { display: 'none' } : null" class="drinksContainer">
+        <div *ngFor="let drink of drinks">
+            <p appHighlight>{{ drink.strDrink }}</p>
+            <img [src]="drink.strDrinkThumb" alt="" class="drink-image">
+        </div>
     </div>
 </div>

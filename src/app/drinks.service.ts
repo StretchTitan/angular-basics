@@ -14,4 +14,10 @@ export class DrinksService {
       map((res: any) => res.drinks)
     )
   }
+
+  fetchAlcohol(alcohol: string) {
+    return this.httpClient.get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${alcohol}`).pipe(
+      map((res: any) => res.drinks)
+    )
+  }
 }

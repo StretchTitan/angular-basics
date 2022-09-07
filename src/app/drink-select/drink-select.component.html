@@ -1,0 +1,11 @@
+<form [formGroup]="drinkForm">
+    <input type="text" formControlName="drinkName">
+    <select formControlName="alcohol">
+        <option default>Any</option>
+        <option>Rum</option>
+        <option>Whiskey</option>
+        <option>Gin</option>
+        <option>Tequila</option>
+    </select>
+</form>
+<p class="form-status">{{ drinkForm.status }}</p>
