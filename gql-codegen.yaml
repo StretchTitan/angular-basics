@@ -1,0 +1,24 @@
+overwrite: true
+documents: [
+  query,
+  mutation,
+  subscription,
+  fragment
+]
+ 
+generates:
+  # This section specifies the config needed to generate the auth graphql service
+  ./src/app/graphql.service.ts:
+    # This dictates to the generator where to find what files that contain the GraphQL queries. Files with the .graphql extension but not .unauth.graphql extension will be used
+    documents:
+      - "src/**/*.graphql"
+    # Point to the auth graphql schema for generating the auth graph service
+    schema: "./src/app/schema.graphql"
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-apollo-angular"
+      - "fragment-matcher"
+    config:
+      pureMagicComment: true # Fancy tree shaking capability when compiling the service that is created
+      declarationKind: "interface"

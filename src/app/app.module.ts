@@ -14,6 +14,8 @@ import { HighlightDirective } from './highlight.directive';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DrinkSelectComponent } from './drink-select/drink-select.component';
+import { BooksComponent } from './books/books.component';
+import { GraphQLModule } from './graphql.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { DrinkSelectComponent } from './drink-select/drink-select.component';
     DrinksComponent,
     HighlightDirective,
     SearchBarComponent,
-    DrinkSelectComponent
+    DrinkSelectComponent,
+    BooksComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +35,7 @@ import { DrinkSelectComponent } from './drink-select/drink-select.component';
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
+    GraphQLModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: DrinksInterceptor, multi: true },

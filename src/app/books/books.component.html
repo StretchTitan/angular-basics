@@ -1,0 +1,10 @@
+<div class="book-form">
+    <input type="text" class="book-title" placeholder="Title" [(ngModel)]="title">
+    <input type="text" class="book-author" placeholder="Author" [(ngModel)]="author">
+    <button (click)="addBook()">Add Book</button>
+</div>
+
+<div class="book" *ngFor="let book of (books$ | async)">
+    <p>{{ book.author }}</p>
+    <p>{{ book.title }}</p>
+</div>

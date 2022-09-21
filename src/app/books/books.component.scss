@@ -1,0 +1,23 @@
+.book-form{
+    display: flex;
+    margin-top: 24px;
+
+    input {
+     margin-left: 24px;
+    }
+
+    button {
+        margin-left: 24px;
+    }
+}
+
+.book {
+    margin: 24px;
+    width: 200px;
+    padding: 24px;
+    border: solid black 1px;
+
+    p {
+        margin-bottom: 4px;
+    }
+}
