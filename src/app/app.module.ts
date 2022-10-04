@@ -16,6 +16,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DrinkSelectComponent } from './drink-select/drink-select.component';
 import { BooksComponent } from './books/books.component';
 import { GraphQLModule } from './graphql.module';
+import { StoreModule } from '@ngrx/store';
+import { booksReducer } from './store/books.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -36,6 +39,8 @@ import { GraphQLModule } from './graphql.module';
     FormsModule,
     ReactiveFormsModule,
     GraphQLModule,
+    StoreModule.forRoot({ bookStore: booksReducer }),
+    StoreDevtoolsModule.instrument()
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: DrinksInterceptor, multi: true },
