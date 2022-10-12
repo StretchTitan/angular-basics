@@ -1,6 +1,11 @@
-import { gql } from 'apollo-angular';
+// Angular
 import { Injectable } from '@angular/core';
-import * as Apollo from 'apollo-angular';
+
+// Apollo
+import { gql } from 'apollo-angular';
+import { Apollo, Mutation as ApolloMutation, Query as ApolloQuery } from 'apollo-angular';
+
+
 /** All built-in and custom scalars, mapped to their actual values */
 export interface Scalars {
   ID: string;
@@ -17,81 +22,83 @@ export interface Book {
   title?: Maybe<Scalars['String']>;
 }
 
+export type Books = Book[];
+
+export type BookQuery = Maybe<Book> | undefined;
+
 export interface Mutation {
   __typename?: 'Mutation';
-  addBook?: Maybe<Book>;
+  addBook?: BookQuery;
 }
-
 
 export interface MutationAddBookArgs {
   author: Scalars['String'];
   title: Scalars['String'];
 }
 
-export interface Query {
-  __typename?: 'Query';
-  books?: Maybe<Array<Maybe<Book>>>;
-}
-
 export type AddBookMutationVariables = Exact<{
-  title: Scalars['String'];
   author: Scalars['String'];
+  title: Scalars['String'];
 }>;
 
+export type AddBookMutation = {
+  __typename?: 'Mutation',
+  addBook?: Maybe<Book>,
+};
 
-export type AddBookMutation = { __typename?: 'Mutation', addBook?: { __typename?: 'Book', title?: string | null, author?: string | null } | null };
+export type BooksQueryVariables = Exact<Record<string, never>>;
 
-export type BooksQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type BooksQuery = { __typename?: 'Query', books?: Array<{ __typename?: 'Book', author?: string | null, title?: string | null } | null> | null };
+export type BooksQuery = {
+  __typename?: 'Query',
+  books?: Maybe<Books>,
+};
 
 export const AddBookDocument = /*#__PURE__*/ gql`
-    mutation AddBook($title: String!, $author: String!) {
+mutation AddBook($title: String!, $author: String!) {
   addBook(title: $title, author: $author) {
     title
     author
   }
 }
-    `;
+`;
 
-  @Injectable({
-    providedIn: 'root'
-  })
-  export class AddBookGQL extends Apollo.Mutation<AddBookMutation, AddBookMutationVariables> {
-    document = AddBookDocument;
-    
-    constructor(apollo: Apollo.Apollo) {
-      super(apollo);
-    }
+@Injectable({
+  providedIn: 'root',
+})
+export class AddBookGQL extends ApolloMutation<AddBookMutation, AddBookMutationVariables> {
+  document = AddBookDocument;
+
+  constructor(apollo: Apollo) {
+    super(apollo);
   }
+}
+
 export const BooksDocument = /*#__PURE__*/ gql`
-    query books {
+query books {
   books {
     author
     title
   }
 }
-    `;
+`;
 
-  @Injectable({
-    providedIn: 'root'
-  })
-  export class BooksGQL extends Apollo.Query<BooksQuery, BooksQueryVariables> {
-    document = BooksDocument;
-    
-    constructor(apollo: Apollo.Apollo) {
-      super(apollo);
-    }
+@Injectable({
+  providedIn: 'root'
+})
+export class BooksGQL extends ApolloQuery<BooksQuery, BooksQueryVariables> {
+  document = BooksDocument;
+
+  constructor(apollo: Apollo) {
+    super(apollo);
   }
+}
 
-      export interface PossibleTypesResultData {
-        possibleTypes: {
-          [key: string]: string[]
-        }
-      }
-      const result: PossibleTypesResultData = {
-  "possibleTypes": {}
+export interface PossibleTypesResultData {
+  possibleTypes: Record<string, string[]>;
+}
+
+const result: PossibleTypesResultData = {
+  possibleTypes: {},
 };
-      export default result;
-    
+
+export default result;
