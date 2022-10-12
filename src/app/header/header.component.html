@@ -1,14 +1,14 @@
 <div class="container-xxl">
     <h1>Magic Header</h1>
-    <ul ngbNav class="nav-tabs">
+    <ul ngbNav class="nav-tabs" [activeId]="currentPath">
         <li ngbNavItem>
-            <a ngbNavLink (click)="goHome()">Home</a>
+            <a ngbNavLink data-path="home" (click)="goHome()">Home</a>
         </li>
         <li ngbNavItem>
-            <a ngbNavLink routerLink="drinks">Drinks</a>
+            <a ngbNavLink data-path="drinks" routerLink="drinks">Drinks</a>
         </li>
         <li ngbNavItem>
-            <a ngbNavLink routerLink="books">Books</a>
+            <a ngbNavLink data-path="books" routerLink="books">Books</a>
         </li>
     </ul>
 </div>
