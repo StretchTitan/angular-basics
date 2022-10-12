@@ -7,7 +7,9 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "gen-gql": "graphql-codegen --config gql-codegen.yaml"
+    "gen-gql": "graphql-codegen --config gql-codegen.yaml",
+    "g:c": "ng g c --skip-import",
+    "g:d": "ng g d --skip-import"
   },
   "private": true,
   "dependencies": {
