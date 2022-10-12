@@ -32,7 +32,7 @@
     "@apollo/client": "^3.0.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~13.2.6",
+    "@angular-devkit/build-angular": "~13.3.9",
     "@angular/cli": "~13.2.6",
     "@angular/compiler-cli": "~13.2.0",
     "@graphql-codegen/cli": "^2.12.1",
